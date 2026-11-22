@@ -1,0 +1,1049 @@
+```html
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <!-- إعدادات الترميز والتجاوب الكامل مع الموبايل وجميع الشاشات (Mobile-First) -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>اكتشف نوع عقليتك في الشغل (مشرفين وتيم ليدر المنسقين والمروجين) | jop-in-market</title>
+  <meta name="description" content="اختبار شخصية تفاعلي ممتع باللهجة المصرية من jop-in-market لمشرفين وتيم ليدر المنسقين والمروجين (Merchandising & Promotions) - اكتشف نوع عقليتك القيادية في أقل من دقيقة!" />
+
+  <!-- تحميل خط Cairo العربي العصري وخط Inter للبراند والأرقام -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Inter:wght@500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- تحميل مكتبة Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- إعدادات Tailwind المخصصة للخطوط والحركات الناعمة -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Cairo', 'Inter', 'sans-serif'],
+            brand: ['Inter', 'Cairo', 'sans-serif'],
+          },
+          keyframes: {
+            fadeSlideUp: {
+              '0%': { opacity: '0', transform: 'translateY(18px) scale(0.98)' },
+              '100%': { opacity: '1', transform: 'translateY(0) scale(1)' },
+            },
+            fadeOut: {
+              '0%': { opacity: '1', transform: 'translateY(0)' },
+              '100%': { opacity: '0', transform: 'translateY(-10px)' },
+            },
+            floatSlow: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-8px)' },
+            },
+            pulseGlow: {
+              '0%, 100%': { boxShadow: '0 0 0 0 rgba(13, 148, 136, 0.38)' },
+              '50%': { boxShadow: '0 0 0 12px rgba(13, 148, 136, 0)' },
+            }
+          },
+          animation: {
+            'fade-slide-up': 'fadeSlideUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+            'fade-out': 'fadeOut 0.22s ease-in forwards',
+            'float-slow': 'floatSlow 3.5s ease-in-out infinite',
+            'pulse-glow': 'pulseGlow 2.4s infinite',
+          }
+        }
+      }
+    };
+  </script>
+</head>
+
+<body class="min-h-screen bg-gradient-to-br from-teal-50/80 via-white to-rose-50/70 text-slate-800 font-sans antialiased overflow-x-hidden selection:bg-teal-200 selection:text-teal-950">
+
+  <!-- كانفاس القصاصات الاحتفالية (Confetti) يعمل عند ظهور النتيجة فقط بدون إعاقة اللمس -->
+  <canvas id="confetti-canvas" class="fixed inset-0 w-full h-full pointer-events-none z-50 hidden"></canvas>
+
+  <!-- خلفية زخرفية ناعمة مستوحاة من حيوية الفيلد وحملات الترويج والـ Trade Marketing -->
+  <div class="fixed inset-0 overflow-hidden pointer-events-none -z-10" aria-hidden="true">
+    <div class="absolute -top-24 -right-24 w-72 h-72 sm:w-96 sm:h-96 bg-teal-300/25 rounded-full blur-3xl"></div>
+    <div class="absolute top-1/2 -left-24 w-72 h-72 sm:w-96 sm:h-96 bg-rose-300/25 rounded-full blur-3xl"></div>
+    <div class="absolute -bottom-24 right-1/3 w-72 h-72 bg-amber-300/25 rounded-full blur-3xl"></div>
+  </div>
+
+  <!-- الحاوية الرئيسية للتطبيق -->
+  <div class="min-h-screen flex flex-col justify-between px-4 py-5 sm:py-8">
+
+    <!-- الشريط العلوي للبراند -->
+    <header class="w-full max-w-2xl mx-auto mb-4 sm:mb-6 flex items-center justify-between gap-3">
+      <a href="https://sites.google.com/view/job-in-market" target="_blank" rel="noopener noreferrer"
+         class="inline-flex items-center gap-2.5 bg-white/90 backdrop-blur-md border border-slate-200/80 px-4 py-2 rounded-2xl shadow-sm hover:shadow-md hover:border-teal-300 transition-all duration-200">
+        <span class="w-8 h-8 rounded-xl bg-gradient-to-tr from-teal-600 via-cyan-500 to-rose-500 text-white flex items-center justify-center shadow-sm">
+          <!-- أيقونة التنسيق والترويج (Megaphone / Spark) -->
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z" />
+          </svg>
+        </span>
+        <span class="font-brand font-extrabold text-base sm:text-lg tracking-tight text-slate-900" dir="ltr">jop-in-market</span>
+      </a>
+
+      <!-- شارة المجال -->
+      <div class="inline-flex items-center gap-1.5 text-xs font-bold text-teal-800 bg-teal-100/80 border border-teal-200/70 px-3 sm:px-3.5 py-1.5 rounded-full">
+        <span>📣</span>
+        <span class="hidden sm:inline">مشرفين وتيم ليدر المنسقين والمروجين</span>
+        <span class="sm:hidden">تيم ليدر تنسيق وترويج</span>
+      </div>
+    </header>
+
+    <!-- المحتوى الرئيسي -->
+    <main class="w-full max-w-2xl mx-auto my-auto">
+
+      <!-- =========================================================
+           الشاشة 1: شاشة الترحيب (Welcome Screen)
+      ========================================================== -->
+      <section id="welcome-screen" class="bg-white/95 backdrop-blur-md border border-slate-200/80 rounded-3xl shadow-xl shadow-teal-900/5 p-6 sm:p-10 text-center animate-fade-slide-up">
+
+        <!-- أيقونة رئيسية متحركة -->
+        <div class="w-20 h-20 sm:w-24 sm:h-24 mx-auto mb-5 rounded-3xl bg-gradient-to-br from-teal-600 via-cyan-500 to-rose-500 p-0.5 shadow-lg shadow-teal-500/25 animate-float-slow">
+          <div class="w-full h-full bg-white rounded-[22px] flex items-center justify-center text-4xl sm:text-5xl">
+            📣
+          </div>
+        </div>
+
+        <!-- شارة سريعة -->
+        <div class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-rose-50 border border-rose-200/80 text-rose-800 text-xs sm:text-sm font-bold mb-4">
+          <span>🔥</span>
+          <span>اختبار مشرفين وتيم ليدر المنسقين والمروجين (Field Leaders)</span>
+        </div>
+
+        <!-- عنوان الاختبار -->
+        <h1 class="text-2xl sm:text-4xl font-black text-slate-900 leading-tight mb-4">
+          اكتشف نوع عقليتك في الشغل <span class="inline-block">🚀</span>
+        </h1>
+
+        <!-- نبذة مشوقة في سطرين -->
+        <p class="text-slate-600 text-base sm:text-lg leading-relaxed max-w-xl mx-auto mb-7 font-medium">
+          7 مواقف حقيقية من الـ Check-in الصبح، حرب الـ Planogram والـ POSM، وتارجت الـ Sell-out هتكشف إنت مين وسط الفيلد: مهندس الـ KPIs، القائد الكوتش، وحش الميدان، ولا عبقري الـ Display؟
+          جاوب بصراحة في أقل من دقيقة واعرف لقبك القيادي الحقيقي!
+        </p>
+
+        <!-- بطاقات معلومات سريعة -->
+        <div class="grid grid-cols-3 gap-2.5 sm:gap-4 max-w-md mx-auto mb-8">
+          <div class="bg-slate-50 border border-slate-200/70 rounded-2xl p-3 flex flex-col items-center justify-center gap-1">
+            <span class="text-xl">⏱️</span>
+            <span class="text-xs sm:text-sm font-bold text-slate-700">أقل من دقيقة</span>
+          </div>
+          <div class="bg-slate-50 border border-slate-200/70 rounded-2xl p-3 flex flex-col items-center justify-center gap-1">
+            <span class="text-xl">🎯</span>
+            <span class="text-xs sm:text-sm font-bold text-slate-700">7 مواقف</span>
+          </div>
+          <div class="bg-slate-50 border border-slate-200/70 rounded-2xl p-3 flex flex-col items-center justify-center gap-1">
+            <span class="text-xl">🏆</span>
+            <span class="text-xs sm:text-sm font-bold text-slate-700">4 عقليات</span>
+          </div>
+        </div>
+
+        <!-- زر بدء الاختبار الكبير -->
+        <button id="start-quiz-btn" type="button"
+                class="w-full sm:w-auto min-w-[260px] inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl bg-gradient-to-l from-teal-600 via-cyan-600 to-emerald-600 hover:from-teal-700 hover:via-cyan-700 hover:to-emerald-700 text-white font-extrabold text-lg sm:text-xl shadow-lg shadow-teal-600/30 hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-200 animate-pulse-glow cursor-pointer">
+          <span>ابدأ الاختبار الآن 🚀</span>
+        </button>
+
+        <p class="mt-4 text-xs text-slate-400 font-semibold">
+          بدون تسجيل • مجاني 100% • نتيجة فورية جاهزة للمشاركة
+        </p>
+      </section>
+
+      <!-- =========================================================
+           الشاشة 2: شاشة الأسئلة (Quiz Screen)
+      ========================================================== -->
+      <section id="quiz-screen" class="hidden bg-white/95 backdrop-blur-md border border-slate-200/80 rounded-3xl shadow-xl shadow-teal-900/5 p-5 sm:p-8">
+
+        <!-- شريط التقدم العلوي -->
+        <div class="mb-6">
+          <div class="flex items-center justify-between text-sm font-bold mb-2.5">
+            <span id="question-counter" class="text-teal-800 bg-teal-50 px-3 py-1 rounded-xl border border-teal-100">
+              السؤال 1 من 7
+            </span>
+            <span id="progress-percent" class="text-slate-500 font-brand font-bold text-xs sm:text-sm">
+              14%
+            </span>
+          </div>
+          <!-- المسار والشريط المتحرك بنعومة -->
+          <div class="w-full h-3 bg-slate-100 rounded-full overflow-hidden p-0.5 border border-slate-200/70">
+            <div id="progress-bar"
+                 class="h-full rounded-full bg-gradient-to-l from-rose-500 via-cyan-500 to-teal-600 transition-all duration-500 ease-out"
+                 style="width: 14.28%;">
+            </div>
+          </div>
+        </div>
+
+        <!-- حاوية السؤال والاختيارات مع تأثيرات الانتقال -->
+        <div id="question-container" class="animate-fade-slide-up">
+          <div class="mb-6">
+            <span id="question-badge" class="inline-block text-xs font-extrabold text-rose-700 bg-rose-50 border border-rose-200/70 px-3 py-1 rounded-full mb-3">
+              موقف من قلب الفيلد
+            </span>
+            <h2 id="question-text" class="text-lg sm:text-2xl font-extrabold text-slate-900 leading-relaxed">
+              <!-- يتم حقن نص السؤال هنا -->
+            </h2>
+          </div>
+
+          <!-- قائمة الاختيارات (أ، ب، ج، د) -->
+          <div id="options-list" class="space-y-3" role="radiogroup" aria-label="اختيارات الإجابة">
+            <!-- يتم توليد الاختيارات برمجياً -->
+          </div>
+        </div>
+
+        <!-- شريط التنقل السفلي -->
+        <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
+          <button id="prev-btn" type="button"
+                  class="hidden inline-flex items-center gap-1.5 text-sm font-bold text-slate-500 hover:text-teal-700 px-3 py-2 rounded-xl hover:bg-slate-100 transition-colors cursor-pointer">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
+            <span>السؤال السابق</span>
+          </button>
+          <span class="text-xs text-slate-400 font-semibold mr-auto">اختار التصرف اللي بتعمله فعلاً في الفروع 😉</span>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           الشاشة 2.5: شاشة التحليل التشويقية (Analyzing Screen)
+      ========================================================== -->
+      <section id="analyzing-screen" class="hidden bg-white/95 backdrop-blur-md border border-slate-200/80 rounded-3xl shadow-xl shadow-teal-900/5 p-10 text-center animate-fade-slide-up">
+        <div class="w-16 h-16 mx-auto mb-5 rounded-full border-4 border-teal-100 border-t-teal-600 animate-spin"></div>
+        <h2 class="text-xl sm:text-2xl font-black text-slate-900 mb-2">
+          بنحلل أسلوبك في قيادة المنسقين والمروجين... 📣
+        </h2>
+        <p class="text-slate-500 text-sm sm:text-base font-medium">
+          لحظة واحدة وهتعرف لقبك الحقيقي وسط مشرفين الفيلد والـ Trade Marketing!
+        </p>
+      </section>
+
+      <!-- =========================================================
+           الشاشة 3: شاشة النتيجة النهائية (Result Screen)
+      ========================================================== -->
+      <section id="result-screen" class="hidden space-y-5 animate-fade-slide-up">
+
+        <!-- بطاقة النتيجة الرئيسية -->
+        <div class="bg-white/95 backdrop-blur-md border border-slate-200/80 rounded-3xl shadow-xl shadow-teal-900/5 overflow-hidden">
+
+          <!-- رأس النتيجة المتدرج حسب العقلية -->
+          <div id="result-header" class="p-6 sm:p-8 text-center text-white bg-gradient-to-br from-teal-600 to-cyan-700 relative overflow-hidden">
+            <div class="absolute -top-12 -left-12 w-36 h-36 bg-white/15 rounded-full blur-xl pointer-events-none"></div>
+            <div class="absolute -bottom-12 -right-12 w-40 h-40 bg-black/10 rounded-full blur-xl pointer-events-none"></div>
+
+            <div class="relative z-10">
+              <span class="inline-block px-4 py-1 rounded-full bg-white/20 backdrop-blur-sm text-xs sm:text-sm font-bold mb-4">
+                نتيجتك من jop-in-market ✨
+              </span>
+
+              <!-- إيموجي اللقب -->
+              <div id="result-emoji" class="text-5xl sm:text-6xl mb-3 drop-shadow-sm">📊📋</div>
+
+              <!-- اللقب بخط كبير ومميز -->
+              <h2 id="result-title" class="text-2xl sm:text-4xl font-black tracking-tight mb-1.5 drop-shadow-sm">
+                مهندس الـ Planogram والـ KPIs
+              </h2>
+              <p id="result-subtitle" class="text-white/95 text-base sm:text-lg font-bold">
+                (مايسترو الدقة والتقارير والـ Share of Shelf)
+              </p>
+            </div>
+          </div>
+
+          <!-- تفاصيل النتيجة -->
+          <div class="p-5 sm:p-8 space-y-6">
+
+            <!-- الوصف النفسي ونقاط القوة -->
+            <div class="bg-slate-50/90 border border-slate-200/70 rounded-2xl p-5">
+              <h3 class="flex items-center gap-2 text-base sm:text-lg font-extrabold text-slate-900 mb-2.5">
+                <span>💪</span>
+                <span>عقليتك ونقاط قوتك في إدارة الفيلد والتيم:</span>
+              </h3>
+              <p id="result-description" class="text-slate-700 text-sm sm:text-base leading-loose font-medium">
+                <!-- يتم حقن الوصف هنا -->
+              </p>
+            </div>
+
+            <!-- نصيحة سريعة -->
+            <div class="bg-amber-50/90 border border-amber-200/80 rounded-2xl p-5">
+              <h3 class="flex items-center gap-2 text-base sm:text-lg font-extrabold text-amber-900 mb-2">
+                <span>💡</span>
+                <span>نصيحة سريعة تقرّبك للترقية الجاية:</span>
+              </h3>
+              <p id="result-tip" class="text-amber-900/90 text-sm sm:text-base leading-relaxed font-semibold">
+                <!-- يتم حقن النصيحة هنا -->
+              </p>
+            </div>
+
+            <!-- نسب العقليات الأربع داخل إجابات المستخدم -->
+            <div class="bg-white border border-slate-200/80 rounded-2xl p-5">
+              <h3 class="text-sm sm:text-base font-extrabold text-slate-800 mb-4 flex items-center gap-2">
+                <span>📊</span>
+                <span>تركيبة عقليتك القيادية حسب إجاباتك:</span>
+              </h3>
+              <div id="traits-breakdown" class="space-y-3">
+                <!-- يتم حقن الأشرطة برمجياً -->
+              </div>
+            </div>
+
+            <!-- أزرار المشاركة الفورية + زر المزيد من الاختبارات -->
+            <div class="pt-3 border-t border-slate-100 space-y-3">
+              <div class="text-center mb-3">
+                <p class="text-sm sm:text-base font-extrabold text-slate-800 mb-1">
+                  شارك نتيجتك وتحدى مشرفين الفيلد والتيم بتاعك! 🔥
+                </p>
+                <p class="text-xs sm:text-sm text-slate-500 font-medium">
+                  ابعته على جروب المشرفين أو المنسقين والمروجين وشوف مين "وحش الميدان" ومين "عبقري الـ Sell-Out" 😂👇
+                </p>
+              </div>
+
+              <!-- زر واتساب (أخضر) وزر فيسبوك (أزرق) -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <button id="whatsapp-share-btn" type="button"
+                        class="w-full inline-flex items-center justify-center gap-2.5 px-5 py-3.5 rounded-2xl bg-[#25D366] hover:bg-[#1ebe5d] active:scale-[0.98] text-white font-extrabold text-sm sm:text-base shadow-md shadow-emerald-500/25 transition-all duration-200 cursor-pointer">
+                  <span>شارك نتيجتك على واتساب 📲</span>
+                </button>
+
+                <button id="facebook-copy-btn" type="button"
+                        class="w-full inline-flex items-center justify-center gap-2.5 px-5 py-3.5 rounded-2xl bg-[#1877F2] hover:bg-[#1465d1] active:scale-[0.98] text-white font-extrabold text-sm sm:text-base shadow-md shadow-blue-500/25 transition-all duration-200 cursor-pointer">
+                  <span>انسخ النتيجة والرابط لنشرها على فيسبوك 📋</span>
+                </button>
+              </div>
+
+              <!-- زر لمزيد من الاختبارات يفتح رابط الموقع مباشرة -->
+              <a href="https://sites.google.com/view/job-in-market" target="_blank" rel="noopener noreferrer"
+                 class="w-full inline-flex items-center justify-center gap-2.5 px-5 py-3.5 rounded-2xl bg-gradient-to-l from-teal-600 to-cyan-600 hover:from-teal-700 hover:to-cyan-700 active:scale-[0.98] text-white font-extrabold text-sm sm:text-base shadow-md shadow-teal-500/25 transition-all duration-200">
+                <span>لمزيد من الاختبارات الممتعة 🎯</span>
+                <svg class="w-4 h-4 rotate-180" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </a>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- =========================================================
+             صندوق الدعوة لاتخاذ إجراء (CTA Box) الخاص بخدمات jop-in-market
+        ========================================================== -->
+        <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-slate-900 via-teal-950 to-slate-900 text-white p-6 sm:p-8 shadow-xl border border-teal-500/30">
+          <!-- إضاءات خلفية ناعمة -->
+          <div class="absolute -top-16 -left-16 w-48 h-48 bg-rose-400/20 rounded-full blur-3xl pointer-events-none"></div>
+          <div class="absolute -bottom-16 -right-16 w-48 h-48 bg-cyan-500/25 rounded-full blur-3xl pointer-events-none"></div>
+
+          <div class="relative z-10 flex flex-col sm:flex-row items-center justify-between gap-5 text-center sm:text-right">
+            <div class="space-y-2.5">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-teal-400/20 border border-teal-300/30 text-teal-300 text-xs font-extrabold">
+                <span>🎁</span>
+                <span>أدوات وخدمات مجانية من jop-in-market</span>
+              </span>
+              <h3 class="text-lg sm:text-2xl font-black leading-snug text-white">
+                تقدر تحسب صافي مرتبك وتكلفه الساعه وتراجع علي الcv وخدمات كتير
+              </h3>
+              <p class="text-slate-300 text-xs sm:text-sm font-medium">
+                أدوات عملية ذكية تساعدك تطوّر مستقبلك المهني وتعرف قيمتك الحقيقية في سوق العمل بضغطة زر.
+              </p>
+            </div>
+
+            <a href="https://sites.google.com/view/job-in-market" target="_blank" rel="noopener noreferrer"
+               class="w-full sm:w-auto shrink-0 inline-flex items-center justify-center gap-2 px-6 py-4 rounded-2xl bg-gradient-to-l from-amber-400 to-yellow-300 hover:from-amber-300 hover:to-yellow-200 text-slate-950 font-black text-sm sm:text-base shadow-lg shadow-amber-500/25 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200">
+              <span>ادخل على الأدوات الآن</span>
+              <svg class="w-5 h-5 rotate-180" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- زر إعادة الاختبار -->
+        <div class="text-center pt-1">
+          <button id="retake-quiz-btn" type="button"
+                  class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-white/90 hover:bg-white border border-slate-200 text-slate-700 hover:text-teal-700 font-bold text-sm shadow-sm hover:shadow transition-all duration-200 cursor-pointer">
+            <span>إعادة الاختبار مرة أخرى 🔄</span>
+          </button>
+        </div>
+
+      </section>
+    </main>
+
+    <!-- تذييل الصفحة -->
+    <footer class="w-full max-w-2xl mx-auto mt-6 text-center text-xs text-slate-500 font-semibold">
+      صُمم بحب لجمهور <span class="font-brand font-bold text-teal-700" dir="ltr">jop-in-market</span> • اختبر نفسك وشارك نتيجتك 📣🚀
+    </footer>
+  </div>
+
+  <!-- =========================================================
+       إشعار منبثق أنيق (Toast Notification) بدلاً من alert()
+  ========================================================== -->
+  <div id="toast-box"
+       role="status"
+       aria-live="polite"
+       class="fixed bottom-5 left-1/2 -translate-x-1/2 z-50 pointer-events-none opacity-0 translate-y-4 transition-all duration-300 w-[90%] max-w-sm">
+    <div id="toast-content"
+         class="bg-slate-900 text-white px-5 py-3.5 rounded-2xl shadow-2xl border border-slate-700 flex items-center justify-center gap-2.5 text-sm font-bold text-center">
+      <span id="toast-icon">✅</span>
+      <span id="toast-message">تم النسخ بنجاح!</span>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       المنطق البرمجي الكامل للاختبار (JavaScript)
+  ========================================================== -->
+  <script>
+    (function () {
+      'use strict';
+
+      // ---------------------------------------------------------
+      // 1. بيانات الأسئلة الـ 7 الخاصة بمشرفين وتيم ليدر المنسقين والمروجين
+      // ---------------------------------------------------------
+      const QUIZ_QUESTIONS = [
+        {
+          id: 1,
+          badge: 'طوارئ الـ Check-in والغياب 🚨',
+          text: 'يوم جمعة (بداية ويك إند وحملة Activation قوية)، الهايبر فتح واتنين مروجين (Promoters) أو منسقين ما عملوش Check-in على الأبليكيشن وموبايلاتهم مقفولة.. أول حاجة بتعملها إيه؟',
+          options: [
+            { type: 'أ', text: 'بفتح شيت الـ Standby والـ Route Plan فوراً وأحرّك أقرب بديل وأبلّغ الـ Operations بالتوقيت الدقيق عشان الـ KPIs ما تضربش.' },
+            { type: 'ب', text: 'بطمن عليهم الأول عن طريق زمايلهم عشان أتأكد إن مفيش ظرف طارئ، وبهدوء وعلاقتي بمدير الفرع بنظبط الدنيا لحد ما البديل يوصل.' },
+            { type: 'ج', text: 'بنزل أنا بنفسي على الفرع اللي فيه عجز أوقف الستاند أو أرص الرفوف وأمشي الشغل بإيدي لحد ما أسد الفجوة!' },
+            { type: 'د', text: 'بعيد توزيع المروجين المتاحين على الـ Hotspots الأكثر زحمة بـ Pitch بيعي أقوى عشان نحقق نفس تارجت اليوم بنص العدد!' }
+          ]
+        },
+        {
+          id: 2,
+          badge: 'معركة الـ Planogram والـ POSM 🏪',
+          text: 'نزلت زيارة متابعة (Audit) لفرع كبير، لقيت المنافس شال الـ POSM بتاعتنا وحط بضاعته مكانها، والمنسق بتاعنا لسه مخلصش الرص.. رد فعلك إيه؟',
+          options: [
+            { type: 'أ', text: 'بصوّر الوضع قبل وبعد (Before & After) وبراجع حصة الرف المتفق عليها (Share of Shelf) وأوثقها على السيستم عشان نبعتها للـ Key Account.' },
+            { type: 'ب', text: 'بروح لمدير القسم أو مدير الفرع بابتسامة وكلمتين حلوين وعلاقتي القوية بيه، وفي 5 دقايق بنرجّع مكاننا في مستوى النظر (Eye Level)!' },
+            { type: 'ج', text: 'بشمّر إيدي وأنزل مع المنسق نرجّع البضاعة والـ Planogram بالمسطرة ونركّب الـ Wobblers والـ Branding بإيدينا قبل ما أمشي.' },
+            { type: 'د', text: 'بفكر فوراً في فكرة عرض إضافي (Secondary Display أو Cross-Merchandising) تخطف عين الزبون وتخلي حضورنا أقوى من المنافس بمراحل!' }
+          ]
+        },
+        {
+          id: 3,
+          badge: 'تحدي الـ Sell-Out والمروجين 🎤',
+          text: 'في نص الأسبوع التاني من الحملة، مبيعات المروجين (Sell-Out) واقعة في فرعين كبار والعميل (Client) باعت ميل بيسأل ليه الأرقام ضعيفة.. بتتصرف إزاي؟',
+          options: [
+            { type: 'أ', text: 'بحلل الأرقام ساعة بساعة وأقارن الـ Footfall بالـ Conversion Rate عشان أعرف المشكلة في التوقيت، مكان الستاند، ولا السعر وأبعت للعميل خطة بالأرقام.' },
+            { type: 'ب', text: 'بقعد مع المروجين أسمعهم وأعرف إيه اعتراضات الزباين، وأعملهم Coaching سريع وRole-play يرجع لهم الحماس والثقة في نفسهم.' },
+            { type: 'ج', text: 'بنزل أقف جنب المروجين في الفرعين وقت الذروة، وأبيع معاهم للزباين بنفسي عشان أوريهم عملياً إزاي يكسروا الجليد ويقفلوا البيعة!' },
+            { type: 'د', text: 'بغيّر الـ Pitch وطريقة الـ Sampling أو أربط المنتج بعرض شغال جوه الهايبر عشان الزبون يقف يتشد غصب عنه ويشتري!' }
+          ]
+        },
+        {
+          id: 4,
+          badge: 'أزمة المخزن والـ OOS 📦',
+          text: 'المنسق بلغك إن الصنف الأساسي خلصان من على الرف (Out of Stock) وموجود جوه المخزن، بس أمين المخزن رافض يطلعه دلوقتي عشان زحمة استلامات.. بتحلها إزاي؟',
+          options: [
+            { type: 'أ', text: 'براجع رصيد السيستم ومعدل السحب اليومي وأبلغ مشرف القسم رسمياً إن توقف الصنف هيضرب مبيعات الفرع والبراند سوا.' },
+            { type: 'ب', text: 'بروح لأمين المخزن بضحكة حلوة واحترام وكوباية شاي.. ولأني كاسب وده ومعاملتي طيبة معاه من زمان، بيطلعلنا البضاعة أول ناس!' },
+            { type: 'ج', text: 'بدخل مع المنسق المخزن نسحب الكراتين على الهاند باليت بنفسنا ونرتبها ونطلعها على الرف في 10 دقايق من غير ما نعطل حد.' },
+            { type: 'د', text: 'بعيد توزيع واجهات (Facings) باقي أصنافنا على الرف مؤقتاً بشكل ذكي عشان المنافس ما ياخدش المساحة لحد ما نطلع البضاعة!' }
+          ]
+        },
+        {
+          id: 5,
+          badge: 'مراجعة التقارير والصور بالليل 📱',
+          text: 'الساعة 9 بالليل وبتراجع صور الـ Before & After وتقارير الـ Sell-Out بتاعة التيم على الجروب أو الأبليكيشن.. إيه أكتر حاجة عينك بتركز عليها؟',
+          options: [
+            { type: 'أ', text: 'دقة التفاصيل: التواريخ (FIFO)، وجود الـ Price Tags، نسب الـ Share of Shelf، وإن كل فرع متقفل بالتقرير والـ GPS بالملّي.' },
+            { type: 'ب', text: 'بشكر المجتهدين قدام التيم كله عشان أرفع روحهم المعنوية، ولو حد مقصر بكلمه على الخاص بهدوء أفهم منه وأساعده يظبط شغله بكرة.' },
+            { type: 'ج', text: 'بركز على الفروع اللي فيها مشاكل حقيقية على الأرض عشان أرتب خط سيري بكرة أبدأ بيها من بدري وأحلها بنفسي.' },
+            { type: 'د', text: 'بلقط أحلى صورة Display أو أعلى مروج قفّل مبيعات وأعملهم Highlight شيك في التقرير عشان أبهر العميل والإدارة بشغلنا!' }
+          ]
+        },
+        {
+          id: 6,
+          badge: 'لحظة الانتصار آخر الشهر 🏆',
+          text: 'إمتى بتاخد نفس عميق آخر الشهر وتحس إن تعب اللف والفروع راح وبقيت "فخور بنفسك وفريقك"؟',
+          options: [
+            { type: 'أ', text: 'لما تقرير الـ Audit الشهري يطلع فوق الـ 95%، ونسبة التزام الحضور والـ Planogram متقفلة من غير ولا ملاحظة.' },
+            { type: 'ب', text: 'لما العميل يجدد العقد ويشيد بأخلاق والتزام فريقك، ولما مروج أو منسق عندك يترقى ويبقى تيم ليدر بسبب تدريبك ليه!' },
+            { type: 'ج', text: 'لما حملة ضخمة في موسم (زي رمضان أو العودة للمدارس) تعدي بسلام، والستاندات والرفوف كلها متقفلة على المفتاح في كل منطقة.' },
+            { type: 'د', text: 'لما مبيعات الـ Sell-Out تكسر التارجت بـ 130% وصور الـ Displays بتاعة فريقك تتعرض كـ Best Practice للشركة كلها!' }
+          ]
+        },
+        {
+          id: 7,
+          badge: 'سمعتك على جروب التيم 👀',
+          text: 'لو المنسقين والمروجين في التيم بتاعك بيتكلموا عنك في ضهرك.. تفتكر هيقولوا عليك إيه؟',
+          options: [
+            { type: 'أ', text: '"ده عينه ليزر.. بيجيب الـ Planogram وتاريخ الصلاحية والـ Price Tag من الصورة قبل ما ينزل الفرع!".' },
+            { type: 'ب', text: '"ده أخونا الكبير وسندنا.. عمره ما بيبخل علينا بنصيحة، ولو حصلت مشكلة في أي هايبر بيجيلنا هوا يقف في ضهرنا".' },
+            { type: 'ج', text: '"ده ماكينة لف على الفروع.. مش بتاع تقارير من البيت، بينزل يشيل كراتين ويرص ستاندات ويبيع بإيده معانا!".' },
+            { type: 'د', text: '"ده دماغه شغالة تسويق 24 ساعة.. بيخليك تبيع للزبون اللي معدي حتى لو مش ناوي يشتري أصلاً!".' }
+          ]
+        }
+      ];
+
+      // ---------------------------------------------------------
+      // 2. بيانات النتائج النهائية الـ 4
+      // ---------------------------------------------------------
+      const QUIZ_RESULTS = {
+        'أ': {
+          key: 'أ',
+          title: 'مهندس الـ Planogram والـ KPIs',
+          subtitle: '(مايسترو الدقة والتقارير والـ Share of Shelf)',
+          shareTitle: 'مهندس الـ Planogram والـ KPIs - مايسترو الدقة 📊📋',
+          emoji: '📊📋',
+          headerGradient: 'from-cyan-600 via-teal-600 to-slate-800',
+          barColor: 'bg-cyan-600',
+          shortLabel: 'مهندس الـ KPIs (دقة وتقارير وPlanogram)',
+          description: 'إنت العين اللي ما بيفوتهاش تفصيلة في الهايبر أو التقرير! عندك حس تنظيمي عالي جداً؛ عارف إزاي تحافظ على حصة الرف (Share of Shelf)، التواريخ (FIFO)، والـ POSM، وبتطلع تقارير للعميل (Client) تخليه يثق فيك من أول نظرة. قوتك في إن شغلك مبني على أرقام ومؤشرات واضحة مش مجرد كلام، وده بيخليك الخيار الأول للإدارة في المشاريع والحملات الكبيرة.',
+          tip: 'الدقة والالتزام بالـ KPIs هما سر تميزك، بس ما تنساش إن المنسق والمروج طول اليوم واقفين على رجليهم تحت ضغط! كلمة تشجيع حلوة وسط التوجيهات الصارمة هتخلي التيم يبدع معاك أكتر بكتير.'
+        },
+        'ب': {
+          key: 'ب',
+          title: 'القائد الكوتش وسند التيم',
+          subtitle: '(ساحر التحفيز وعلاقات الفروع)',
+          shareTitle: 'القائد الكوتش وسند التيم - ساحر التحفيز والعلاقات 🤝❤️',
+          emoji: '🤝❤️',
+          headerGradient: 'from-emerald-600 via-teal-600 to-green-700',
+          barColor: 'bg-emerald-600',
+          shortLabel: 'القائد الكوتش (تحفيز وعلاقات فروع)',
+          description: 'إنت السبب إن المنسقين والمروجين بيحبوا الشغل معاك ومبيسيبوش التيم بسهولة! عندك ذكاء اجتماعي جبار بيخليك تكسب قلوب مديرين الفروع وأمناء المخازن من ناحية، وتبني ولاء وحماس جوه فريقك من ناحية تانية. بتعرف تدرب وتحتوي، وتحوّل أي مروج جديد لبطل مبيعات، وعلاقاتك القوية بتفك أصعب المشاكل في الهايبر بمكالمة واحدة.',
+          tip: 'احتواؤك للفريق وعلاقاتك كنز ميتقدرش بتمن، بس اربط دايماً تشجيعك بمتابعة حازمة للأرقام والتقارير اليومية عشان طيبتك ما تتستغلش وتفضل نتايج تيمك دايماً في الصدارة.'
+        },
+        'ج': {
+          key: 'ج',
+          title: 'وحش الميدان والفيلد',
+          subtitle: '(الجوكر وبطل الأكتيفيشن والزنقات)',
+          shareTitle: 'وحش الميدان والفيلد - بطل الأكتيفيشن والزنقات ⚡🚚',
+          emoji: '⚡🚚',
+          headerGradient: 'from-amber-500 via-orange-600 to-rose-600',
+          barColor: 'bg-orange-500',
+          shortLabel: 'وحش الميدان (تنفيذ ميداني وقيادة بالقدوة)',
+          description: 'إنت تيم ليدر "من قلب الشارع والفروع" مش من ورا الشاشات! مؤمن إن الشغل الحقيقي بيخلص على الأرض؛ وقت الغياب أو تركيب ستاندات الـ Activation أو زحمة المواسم، بتكون أول واحد مشمّر إيده وبيرص ويبيع مع الفريق. أعصابك من حديد تحت الضغط، والعملاء والمديرين عارفين إن أي منطقة أو حملة في إيدك هتتسلم متقفلة على المفتاح!',
+          tip: 'طاقتك الجبارة ومجهودك في الفيلد محدش يقدر ينافسه، بس عشان ما تستنزفش نفسك وتكبر لمنصب Account Manager أو Area Manager، اتعلم تفوّض التنفيذ لتيمك وتخصص وقت أطول لتحليل البيانات والتخطيط.'
+        },
+        'د': {
+          key: 'د',
+          title: 'عبقري الـ Sell-Out والـ Display',
+          subtitle: '(صانع اللقطة ومحقق التارجت)',
+          shareTitle: 'عبقري الـ Sell-Out والـ Display - صانع التارجت 🔥💡',
+          emoji: '🔥💡',
+          headerGradient: 'from-rose-600 via-pink-600 to-purple-700',
+          barColor: 'bg-rose-600',
+          shortLabel: 'عبقري الـ Sell-Out (ترويج وDisplay وتارجت)',
+          description: 'إنت دماغك "Trade Marketing" ماشية على الأرض! عينك بتشوف كل زاوية في السوبر ماركت كفرصة بيع جديدة؛ تعرف إزاي تطلع بأحلى Display يخطف العين، وإزاي تعلم المروجين الـ Pitch اللي يقفل البيعة في ثواني. مفيش عندك كلمة "الفرع نايم"، دايماً عندك فكرة تخلي أرقام الـ Sell-Out تضرب في السما وتخلي العميل يطلبك بالاسم في كل حملة جديدة!',
+          tip: 'إبداعك في البيع والـ Displays هو اللي بيفرقك عن أي مشرف تاني، بس دايماً راجع التزام الفريق بالتقارير اليومية والـ Check-in والـ FIFO بنفس حماسك للأفكار عشان نجاحك يبقى متكامل 100%.'
+        }
+      };
+
+      const DISPLAY_LETTERS = ['أ', 'ب', 'ج', 'د'];
+      const FALLBACK_SITE_URL = 'https://sites.google.com/view/job-in-market';
+
+      // ---------------------------------------------------------
+      // 3. حالة التطبيق (Application State)
+      // ---------------------------------------------------------
+      let currentQuestionIndex = 0;
+      let userAnswers = [];
+      let shuffledQuestions = [];
+      let currentResult = null;
+      let isTransitioning = false;
+      let toastTimeout = null;
+
+      // ---------------------------------------------------------
+      // 4. ربط عناصر واجهة المستخدم (DOM Elements)
+      // ---------------------------------------------------------
+      const welcomeScreen = document.getElementById('welcome-screen');
+      const quizScreen = document.getElementById('quiz-screen');
+      const analyzingScreen = document.getElementById('analyzing-screen');
+      const resultScreen = document.getElementById('result-screen');
+
+      const startQuizBtn = document.getElementById('start-quiz-btn');
+      const prevBtn = document.getElementById('prev-btn');
+      const retakeQuizBtn = document.getElementById('retake-quiz-btn');
+
+      const questionCounterEl = document.getElementById('question-counter');
+      const progressPercentEl = document.getElementById('progress-percent');
+      const progressBarEl = document.getElementById('progress-bar');
+      const questionContainerEl = document.getElementById('question-container');
+      const questionBadgeEl = document.getElementById('question-badge');
+      const questionTextEl = document.getElementById('question-text');
+      const optionsListEl = document.getElementById('options-list');
+
+      const resultHeaderEl = document.getElementById('result-header');
+      const resultEmojiEl = document.getElementById('result-emoji');
+      const resultTitleEl = document.getElementById('result-title');
+      const resultSubtitleEl = document.getElementById('result-subtitle');
+      const resultDescriptionEl = document.getElementById('result-description');
+      const resultTipEl = document.getElementById('result-tip');
+      const traitsBreakdownEl = document.getElementById('traits-breakdown');
+
+      const whatsappShareBtn = document.getElementById('whatsapp-share-btn');
+      const facebookCopyBtn = document.getElementById('facebook-copy-btn');
+
+      const toastBox = document.getElementById('toast-box');
+      const toastIcon = document.getElementById('toast-icon');
+      const toastMessage = document.getElementById('toast-message');
+      const confettiCanvas = document.getElementById('confetti-canvas');
+
+      // ---------------------------------------------------------
+      // 5. الدوال المساعدة (Utilities)
+      // ---------------------------------------------------------
+
+      /**
+       * خلط مصفوفة عشوائياً بخوارزمية Fisher-Yates
+       * حتى لا يتوقع المستخدم النمط وتكون إجاباته عفوية وصادقة
+       */
+      function shuffleArray(array) {
+        const copy = array.slice();
+        for (let i = copy.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          const temp = copy[i];
+          copy[i] = copy[j];
+          copy[j] = temp;
+        }
+        return copy;
+      }
+
+      /**
+       * عرض إشعار منبثق (Toast) أنيق بدلاً من alert()
+       */
+      function showToast(message, icon = '✅') {
+        try {
+          if (toastTimeout) clearTimeout(toastTimeout);
+          toastIcon.textContent = icon;
+          toastMessage.textContent = message;
+
+          toastBox.classList.remove('opacity-0', 'translate-y-4');
+          toastBox.classList.add('opacity-100', 'translate-y-0');
+
+          toastTimeout = setTimeout(() => {
+            toastBox.classList.remove('opacity-100', 'translate-y-0');
+            toastBox.classList.add('opacity-0', 'translate-y-4');
+          }, 3200);
+        } catch (err) {
+          console.error('Toast error:', err);
+        }
+      }
+
+      /**
+       * الحصول على رابط الصفحة الحالي بشكل آمن للمشاركة
+       * وفي حال التشغيل المحلي أو داخل معاينة iFrame يتم استخدام رابط الموقع الرسمي
+       */
+      function getShareableUrl() {
+        try {
+          const href = window.location.href || '';
+          if (href.startsWith('http://') || href.startsWith('https://')) {
+            if (!href.includes('localhost') && !href.includes('127.0.0.1') && !href.includes('usercontent')) {
+              return href;
+            }
+          }
+          return FALLBACK_SITE_URL;
+        } catch (err) {
+          return FALLBACK_SITE_URL;
+        }
+      }
+
+      /**
+       * بناء نص المشاركة بالصيغة المطلوبة تماماً
+       */
+      function buildShareText(result) {
+        const pageUrl = getShareableUrl();
+        return `نتيجتي في اختبار [شخصيتي في الشغل] طلعت (${result.shareTitle})! جرب وشوف نتيجتك من هنا 👇\n${pageUrl}`;
+      }
+
+      /**
+       * نسخ النص للحافظة باستخدام document.execCommand('copy')
+       * لضمان العمل الموثوق داخل iFrame والمتصفحات المختلفة
+       */
+      function copyTextToClipboard(text) {
+        try {
+          const textArea = document.createElement('textarea');
+          textArea.value = text;
+          textArea.setAttribute('readonly', '');
+          textArea.style.position = 'fixed';
+          textArea.style.top = '-9999px';
+          textArea.style.left = '-9999px';
+          document.body.appendChild(textArea);
+
+          textArea.focus();
+          textArea.select();
+          textArea.setSelectionRange(0, textArea.value.length);
+
+          const successful = document.execCommand('copy');
+          document.body.removeChild(textArea);
+          return successful;
+        } catch (err) {
+          console.error('Clipboard copy failed:', err);
+          return false;
+        }
+      }
+
+      // ---------------------------------------------------------
+      // 6. منطق تشغيل الاختبار وعرض الأسئلة
+      // ---------------------------------------------------------
+
+      /**
+       * بدء الاختبار أو إعادته من البداية
+       */
+      function startQuiz() {
+        try {
+          currentQuestionIndex = 0;
+          userAnswers = new Array(QUIZ_QUESTIONS.length).fill(null);
+          currentResult = null;
+          isTransitioning = false;
+
+          // خلط الاختيارات داخل كل سؤال مع الحفاظ على الحرف المرتبط بالنتيجة
+          shuffledQuestions = QUIZ_QUESTIONS.map((q) => ({
+            ...q,
+            options: shuffleArray(q.options)
+          }));
+
+          welcomeScreen.classList.add('hidden');
+          resultScreen.classList.add('hidden');
+          analyzingScreen.classList.add('hidden');
+          quizScreen.classList.remove('hidden');
+
+          renderQuestion();
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        } catch (err) {
+          console.error('Error starting quiz:', err);
+          showToast('حدث خطأ بسيط، جرب تبدأ تاني.', '⚠️');
+        }
+      }
+
+      /**
+       * عرض السؤال الحالي وتحديث شريط التقدم
+       */
+      function renderQuestion() {
+        const question = shuffledQuestions[currentQuestionIndex];
+        const total = shuffledQuestions.length;
+        const stepNumber = currentQuestionIndex + 1;
+        const progressPercent = Math.round((stepNumber / total) * 100);
+
+        // تحديث شريط التقدم والعداد
+        questionCounterEl.textContent = `السؤال ${stepNumber} من ${total}`;
+        progressPercentEl.textContent = `${progressPercent}%`;
+        progressBarEl.style.width = `${(stepNumber / total) * 100}%`;
+
+        // إظهار أو إخفاء زر الرجوع للسؤال السابق
+        if (currentQuestionIndex > 0) {
+          prevBtn.classList.remove('hidden');
+        } else {
+          prevBtn.classList.add('hidden');
+        }
+
+        // إعادة تفعيل حركة دخول السؤال بنعومة
+        questionContainerEl.classList.remove('animate-fade-slide-up', 'animate-fade-out');
+        void questionContainerEl.offsetWidth;
+        questionContainerEl.classList.add('animate-fade-slide-up');
+
+        // تحديث النصوص
+        questionBadgeEl.textContent = question.badge;
+        questionTextEl.textContent = question.text;
+
+        // بناء أزرار الاختيارات الأربعة
+        optionsListEl.innerHTML = '';
+        const previousChoice = userAnswers[currentQuestionIndex];
+
+        question.options.forEach((option, index) => {
+          const displayLetter = DISPLAY_LETTERS[index];
+          const isSelected = previousChoice === option.type;
+
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.setAttribute('role', 'radio');
+          btn.setAttribute('aria-checked', isSelected ? 'true' : 'false');
+
+          btn.className = [
+            'w-full text-right p-4 sm:p-5 rounded-2xl border-2 transition-all duration-200',
+            'flex items-start gap-3.5 group cursor-pointer active:scale-[0.98]',
+            isSelected
+              ? 'border-teal-600 bg-teal-50/85 shadow-md shadow-teal-500/10'
+              : 'border-slate-200/90 bg-white hover:border-teal-400 hover:bg-teal-50/40 hover:shadow-sm'
+          ].join(' ');
+
+          const badge = document.createElement('span');
+          badge.className = [
+            'w-9 h-9 shrink-0 rounded-xl font-extrabold text-sm sm:text-base flex items-center justify-center transition-colors duration-200 mt-0.5',
+            isSelected
+              ? 'bg-teal-600 text-white'
+              : 'bg-slate-100 text-slate-700 group-hover:bg-teal-600 group-hover:text-white'
+          ].join(' ');
+          badge.textContent = displayLetter;
+
+          const textSpan = document.createElement('span');
+          textSpan.className = 'text-sm sm:text-base font-bold text-slate-800 leading-relaxed flex-1';
+          textSpan.textContent = option.text;
+
+          btn.appendChild(badge);
+          btn.appendChild(textSpan);
+
+          btn.addEventListener('click', () => handleOptionSelect(option.type, btn, badge));
+          optionsListEl.appendChild(btn);
+        });
+      }
+
+      /**
+       * معالجة اختيار المستخدم لإجابة والانتقال السلس للسؤال التالي
+       */
+      function handleOptionSelect(selectedType, clickedBtn, badgeEl) {
+        if (isTransitioning) return;
+        isTransitioning = true;
+
+        userAnswers[currentQuestionIndex] = selectedType;
+
+        // إبراز الزر المختار بصرياً قبل الانتقال
+        const allButtons = optionsListEl.querySelectorAll('button');
+        allButtons.forEach((b) => {
+          b.classList.remove('border-teal-600', 'bg-teal-50/85', 'shadow-md');
+          b.classList.add('border-slate-200/90', 'bg-white');
+        });
+        clickedBtn.classList.remove('border-slate-200/90', 'bg-white');
+        clickedBtn.classList.add('border-teal-600', 'bg-teal-50/90', 'shadow-md', 'shadow-teal-500/15');
+        badgeEl.classList.remove('bg-slate-100', 'text-slate-700');
+        badgeEl.classList.add('bg-teal-600', 'text-white');
+
+        setTimeout(() => {
+          questionContainerEl.classList.remove('animate-fade-slide-up');
+          questionContainerEl.classList.add('animate-fade-out');
+
+          setTimeout(() => {
+            if (currentQuestionIndex < shuffledQuestions.length - 1) {
+              currentQuestionIndex++;
+              renderQuestion();
+              isTransitioning = false;
+            } else {
+              showAnalyzingThenResult();
+            }
+          }, 210);
+        }, 220);
+      }
+
+      /**
+       * الرجوع للسؤال السابق
+       */
+      function goToPreviousQuestion() {
+        if (isTransitioning || currentQuestionIndex <= 0) return;
+        currentQuestionIndex--;
+        renderQuestion();
+      }
+
+      // ---------------------------------------------------------
+      // 7. حساب النتيجة وعرضها
+      // ---------------------------------------------------------
+
+      /**
+       * حساب أكثر حرف اختاره المستخدم (أ، ب، ج، د) مع كسر التعادل بذكاء
+       */
+      function calculateResult() {
+        const counts = { 'أ': 0, 'ب': 0, 'ج': 0, 'د': 0 };
+
+        userAnswers.forEach((ans) => {
+          if (ans && Object.prototype.hasOwnProperty.call(counts, ans)) {
+            counts[ans]++;
+          }
+        });
+
+        let maxCount = -1;
+        let topTypes = [];
+
+        Object.keys(counts).forEach((key) => {
+          if (counts[key] > maxCount) {
+            maxCount = counts[key];
+            topTypes = [key];
+          } else if (counts[key] === maxCount) {
+            topTypes.push(key);
+          }
+        });
+
+        let winnerKey = topTypes[0];
+        if (topTypes.length > 1) {
+          // في حالة التعادل، نرجح آخر اختيار حاسم ضمن الشخصيات المتعادلة
+          for (let i = userAnswers.length - 1; i >= 0; i--) {
+            if (topTypes.includes(userAnswers[i])) {
+              winnerKey = userAnswers[i];
+              break;
+            }
+          }
+        }
+
+        return {
+          result: QUIZ_RESULTS[winnerKey],
+          counts: counts
+        };
+      }
+
+      /**
+       * إظهار شاشة التحليل السريع ثم الانتقال لشاشة النتيجة
+       */
+      function showAnalyzingThenResult() {
+        quizScreen.classList.add('hidden');
+        analyzingScreen.classList.remove('hidden');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+
+        setTimeout(() => {
+          analyzingScreen.classList.add('hidden');
+          renderResult();
+          isTransitioning = false;
+        }, 750);
+      }
+
+      /**
+       * عرض شاشة النتيجة وتوزيع النسب وإطلاق الاحتفال
+       */
+      function renderResult() {
+        try {
+          const { result, counts } = calculateResult();
+          currentResult = result;
+
+          resultHeaderEl.className = `p-6 sm:p-8 text-center text-white bg-gradient-to-br ${result.headerGradient} relative overflow-hidden`;
+          resultEmojiEl.textContent = result.emoji;
+          resultTitleEl.textContent = result.title;
+          resultSubtitleEl.textContent = result.subtitle;
+          resultDescriptionEl.textContent = result.description;
+          resultTipEl.textContent = result.tip;
+
+          // بناء أشرطة توزيع الشخصيات الأربع
+          traitsBreakdownEl.innerHTML = '';
+          const total = QUIZ_QUESTIONS.length;
+          const sortedKeys = Object.keys(counts).sort((a, b) => counts[b] - counts[a]);
+
+          sortedKeys.forEach((key) => {
+            const meta = QUIZ_RESULTS[key];
+            const pct = Math.round((counts[key] / total) * 100);
+
+            const row = document.createElement('div');
+            row.className = 'space-y-1.5';
+            row.innerHTML = `
+              <div class="flex items-center justify-between text-xs sm:text-sm font-bold">
+                <span class="text-slate-700">${meta.shortLabel}</span>
+                <span class="font-brand text-slate-600">${pct}%</span>
+              </div>
+              <div class="w-full h-2.5 bg-slate-100 rounded-full overflow-hidden">
+                <div class="h-full rounded-full ${meta.barColor} transition-all duration-700 ease-out" style="width: ${pct}%;"></div>
+              </div>
+            `;
+            traitsBreakdownEl.appendChild(row);
+          });
+
+          resultScreen.classList.remove('hidden');
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+
+          launchConfetti();
+        } catch (err) {
+          console.error('Error rendering result:', err);
+          showToast('حدثت مشكلة أثناء عرض النتيجة، جرب مرة أخرى.', '⚠️');
+        }
+      }
+
+      // ---------------------------------------------------------
+      // 8. أزرار المشاركة الفورية (واتساب وفيسبوك)
+      // ---------------------------------------------------------
+
+      /**
+       * فتح واتساب برسالة النتيجة الجاهزة ورابط الصفحة
+       */
+      function handleWhatsAppShare() {
+        if (!currentResult) return;
+        try {
+          const text = buildShareText(currentResult);
+          const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`;
+          window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+        } catch (err) {
+          console.error('WhatsApp share error:', err);
+          showToast('تعذر فتح واتساب، يمكنك نسخ النتيجة بدلاً من ذلك.', '⚠️');
+        }
+      }
+
+      /**
+       * نسخ النتيجة والرابط للحافظة فوراً لنشرها على فيسبوك
+       */
+      function handleFacebookCopy() {
+        if (!currentResult) return;
+        const text = buildShareText(currentResult);
+        const copied = copyTextToClipboard(text);
+
+        if (copied) {
+          showToast('تم نسخ النتيجة والرابط بنجاح! الصقهم الآن في بوست على فيسبوك 🎉', '📋');
+        } else {
+          showToast('لم نتمكن من النسخ تلقائياً، جرب مرة أخرى.', '⚠️');
+        }
+      }
+
+      // ---------------------------------------------------------
+      // 9. تأثير القصاصات الاحتفالية المتجاوب (Responsive Confetti)
+      // ---------------------------------------------------------
+      function launchConfetti() {
+        try {
+          const ctx = confettiCanvas.getContext('2d');
+          if (!ctx) return;
+
+          confettiCanvas.classList.remove('hidden');
+
+          function resizeCanvas() {
+            confettiCanvas.width = window.innerWidth;
+            confettiCanvas.height = window.innerHeight;
+          }
+          resizeCanvas();
+
+          const colors = ['#0D9488', '#E11D48', '#F59E0B', '#06B6D4', '#10B981', '#9333EA'];
+          const particles = Array.from({ length: 80 }, () => ({
+            x: Math.random() * confettiCanvas.width,
+            y: Math.random() * -confettiCanvas.height * 0.6,
+            w: Math.random() * 8 + 5,
+            h: Math.random() * 5 + 4,
+            color: colors[Math.floor(Math.random() * colors.length)],
+            vx: (Math.random() - 0.5) * 3.2,
+            vy: Math.random() * 3.5 + 2.5,
+            rot: Math.random() * Math.PI * 2,
+            vRot: (Math.random() - 0.5) * 0.16,
+            opacity: 1
+          }));
+
+          const startTime = Date.now();
+          const duration = 2800;
+
+          window.addEventListener('resize', resizeCanvas);
+
+          function animate() {
+            const elapsed = Date.now() - startTime;
+            ctx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+
+            particles.forEach((p) => {
+              p.x += p.vx;
+              p.y += p.vy;
+              p.rot += p.vRot;
+
+              if (elapsed > duration * 0.65) {
+                p.opacity = Math.max(0, 1 - (elapsed - duration * 0.65) / (duration * 0.35));
+              }
+
+              ctx.save();
+              ctx.globalAlpha = p.opacity;
+              ctx.translate(p.x, p.y);
+              ctx.rotate(p.rot);
+              ctx.fillStyle = p.color;
+              ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+              ctx.restore();
+            });
+
+            if (elapsed < duration) {
+              requestAnimationFrame(animate);
+            } else {
+              ctx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+              confettiCanvas.classList.add('hidden');
+              window.removeEventListener('resize', resizeCanvas);
+            }
+          }
+
+          requestAnimationFrame(animate);
+        } catch (err) {
+          console.error('Confetti error:', err);
+        }
+      }
+
+      // ---------------------------------------------------------
+      // 10. ربط الأحداث الرئيسية
+      // ---------------------------------------------------------
+      startQuizBtn.addEventListener('click', startQuiz);
+      prevBtn.addEventListener('click', goToPreviousQuestion);
+      retakeQuizBtn.addEventListener('click', startQuiz);
+      whatsappShareBtn.addEventListener('click', handleWhatsAppShare);
+      facebookCopyBtn.addEventListener('click', handleFacebookCopy);
+    })();
+  </script>
+</body>
+</html>
+```
